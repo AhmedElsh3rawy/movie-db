@@ -4,4 +4,6 @@ export const BASE_URL = "https://api.themoviedb.org/3";
 
 export const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
+export const IMAGE_ORIGINAL_PATH = "https://image.tmdb.org/t/p/original";
+
 export const IMAGE_PATH = "https://media.themoviedb.org/t/p/w220_and_h330_face";
