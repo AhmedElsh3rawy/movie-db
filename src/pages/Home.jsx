@@ -6,6 +6,7 @@ import { API_KEY, BASE_URL } from "../config";
 function Home() {
 	const [data, setData] = useState([]);
 	const [page, setPage] = useState(1);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		(async () => {
@@ -15,25 +16,33 @@ function Home() {
 				const res = await axios.get(url);
 
 				setData((prev) => [...prev, ...res.data.results]);
-				console.log("Page:", page, res.data);
 			} catch (err) {
 				console.error("Error fetching data:", err);
 			}
 		})();
 	}, [page]);
 
+	useEffect(() => {
+		if (data) {
+			setLoading(false);
+		}
+	}, [data]);
+
 	return (
-		<main className="flex flex-col">
-			<CardList data={data} />
-			<div className="flex items-center justify-center fixed bottom-40 w-dvw">
-				{/* <button */}
-				{/* 	className="bg-sky-500 hover:bg-sky-600 text-white rounded w-[200px] py-1 px-2 cursor-pointer" */}
-				{/* 	type="button" */}
-				{/* 	onClick={() => setPage((prev) => prev + 1)} */}
-				{/* > */}
-				{/* 	Load More... */}
-				{/* </button> */}
-			</div>
+		<main className="flex flex-col items-center">
+			{!loading && (
+				<>
+					<CardList data={data} />
+
+					<button
+						className="bg-sky-500 hover:bg-sky-600 text-white font-bold rounded w-[200px] py-1 px-5 cursor-pointer"
+						type="button"
+						onClick={() => setPage((prev) => prev + 1)}
+					>
+						Load More
+					</button>
+				</>
+			)}
 		</main>
 	);
 }
