@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
 	return (
-		<footer className="bg-sky-950 p-3 mt-5 grid gap-3 place-items-center md:grid-cols-4 sm:grid-cols-2 sm:place-items-start text-white w-dvw">
+		<footer className="bg-sky-950 p-3 mt-5 grid gap-3 place-items-center md:grid-cols-4 sm:grid-cols-2 sm:place-items-start text-white">
 			<div>
 				<Link to={"/"}>
 					<img
