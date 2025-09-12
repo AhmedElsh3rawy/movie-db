@@ -13,6 +13,7 @@ function Home() {
 			const url = `${BASE_URL}/trending/all/day?page=${page}&api_key=${API_KEY}`;
 
 			try {
+				setLoading(true);
 				const res = await axios.get(url);
 
 				setData((prev) => [...prev, ...res.data.results]);
@@ -35,7 +36,7 @@ function Home() {
 					<CardList data={data} />
 
 					<button
-						className="bg-sky-500 hover:bg-sky-600 text-white font-bold rounded w-[200px] py-1 px-5 cursor-pointer"
+						className="bg-sky-500 hover:bg-sky-600 text-white font-bold rounded w-[200px] py-1 px-5 cursor-pointer mt-2"
 						type="button"
 						onClick={() => setPage((prev) => prev + 1)}
 					>
