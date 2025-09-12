@@ -16,8 +16,17 @@ function Nav() {
 							/>
 						</Link>
 					</li>
-					<li>Movies</li>
-					<li>TV Shows</li>
+					<Link to={"/movies"}>
+						<li className="cursor-pointer border border-sky-950 hover:border-gray-400 rounded px-1">
+							Movies
+						</li>
+					</Link>
+
+					<Link to={"/tv"}>
+						<li className="cursor-pointer border border-sky-950 hover:border-gray-400 hover:rounded px-1">
+							TV Shows
+						</li>
+					</Link>
 				</ul>
 			</div>
 			<div className="flex gap-2">
