@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { IMAGE_PATH } from "../config";
 import Card from "./Card";
 
-function CardList({ data }) {
+function CardList({ data, media_type = "movie" }) {
+	useEffect(() => {
+		console.log("data:", data);
+	}, [data]);
+
 	return (
 		<div className="flex flex-wrap gap-10">
 			{data.map((item) => (
@@ -11,18 +15,14 @@ function CardList({ data }) {
 					id={item.id}
 					src={
 						item.poster_path
-							? `${IMAGE_PATH}${item.backdrop_path}`
+							? `${IMAGE_PATH}${item.poster_path}`
 							: "https://picsum.photos/200x400"
 					}
-					title={item.media_type === "movie" ? item.title : undefined}
-					name={item.media_type === "tv" ? item.name : undefined}
-					release_date={
-						item.media_type === "movie" ? item.release_date : undefined
-					}
-					first_air_date={
-						item.media_type === "tv" ? item.first_air_date : undefined
-					}
-					media_type={item.media_type}
+					media_type={media_type}
+					title={item.title}
+					name={item.name}
+					release_date={item.release_date}
+					first_air_date={item.first_air_date}
 				/>
 			))}
 		</div>
