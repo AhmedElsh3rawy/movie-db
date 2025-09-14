@@ -9,7 +9,6 @@ function Layout() {
 			<main className="flex-1 px-5 py-5">
 				<Outlet />
 			</main>
-			<Footer />
 		</div>
 	);
 }
