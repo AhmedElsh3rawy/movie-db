@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { WatchlistContext } from "../context/WatchlistContext";
 
 function Nav() {
+	const { watchlist } = useContext(WatchlistContext);
 	return (
-		<nav className="bg-sky-950 text-white p-3 flex justify-around">
+		<nav className="bg-sky-950 text-white p-3 flex justify-between">
 			<div>
 				<ul className="flex gap-5">
 					<li className="">
@@ -16,7 +19,7 @@ function Nav() {
 							/>
 						</Link>
 					</li>
-					<Link to={"/movies"}>
+					<Link to={"/"}>
 						<li className="cursor-pointer border border-sky-950 hover:border-gray-400 rounded px-1">
 							Movies
 						</li>
@@ -29,23 +32,9 @@ function Nav() {
 					</Link>
 				</ul>
 			</div>
-			<div className="flex gap-2">
-				<Link to={"/login"}>
-					<button
-						className="text-sky-950 bg-white rounded py-1 px-2 font-bold cursor-pointer"
-						type="button"
-					>
-						Login
-					</button>
-				</Link>
-				<Link to={"/register"}>
-					<button
-						className="text-sky-950 bg-white rounded py-1 px-2 font-bold cursor-pointer"
-						type="button"
-					>
-						Register
-					</button>
-				</Link>
+			<div className="border-2 rounded-2xl px-2 font-bold cursor-pointer hover:border-gray-400">
+				Whatchlist{" "}
+				<span className="rounded-full bg-red-500 px-1">{watchlist.length}</span>
 			</div>
 		</nav>
 	);
