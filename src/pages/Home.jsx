@@ -10,24 +10,22 @@ function Home() {
 
 	useEffect(() => {
 		(async () => {
-			const url = `${BASE_URL}/trending/all/day?page=${page}&api_key=${API_KEY}`;
-
+			const url = `${BASE_URL}/movie/now_playing?page=${page}&api_key=${API_KEY}`;
 			try {
 				setLoading(true);
 				const res = await axios.get(url);
 
-				setData((prev) => [...prev, ...res.data.results]);
+				setData((prev) => {
+					const merged = [...prev, ...res.data.results];
+					return [...new Map(merged.map((item) => [item.id, item])).values()];
+				});
 			} catch (err) {
 				console.error("Error fetching data:", err);
+			} finally {
+				setLoading(false);
 			}
 		})();
 	}, [page]);
-
-	useEffect(() => {
-		if (data) {
-			setLoading(false);
-		}
-	}, [data]);
 
 	return (
 		<main className="flex flex-col items-center">
