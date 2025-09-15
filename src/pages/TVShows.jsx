@@ -31,7 +31,7 @@ function TVShows() {
 		<main className="flex flex-col items-center">
 			{!loading && (
 				<>
-					<CardList data={data} />
+					<CardList data={data} media_type="tv" />
 
 					<button
 						className="bg-sky-500 hover:bg-sky-600 text-white font-bold rounded w-[200px] py-1 px-5 cursor-pointer mt-2"
