@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import CardDetails from "./components/CardDetails";
 import { WatchlistProvider } from "./context/WatchlistContext";
 import Layout from "./layout/Layout";
 import Home from "./pages/Home";
@@ -15,6 +16,8 @@ const router = createBrowserRouter([
 			{ path: "/tv", element: <TVShows /> },
 			{ path: "/login", element: <Login /> },
 			{ path: "/register", element: <Register /> },
+			{ path: "/movie/:id", element: <CardDetails /> },
+			{ path: "/tv/:id", element: <CardDetails /> },
 			{ path: "*", element: <NotFound /> },
 		],
 	},
