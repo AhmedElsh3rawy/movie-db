@@ -1,5 +1,7 @@
+import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { format } from "../utils/formattedDate";
+import AddButton from "./AddButton";
 
 function Card({
 	id,
@@ -21,13 +23,20 @@ function Card({
 					/>
 				</div>
 
-				<div className="p-2 flex flex-col">
-					<p className="font-bold text-sm text-wrap text-gray-800 truncate w-[150px]">
-						{title || name}
-					</p>
-					<p className="text-[12px] text-gray-500">
-						{format(release_date || first_air_date)}
-					</p>
+				<div className="p-2 flex">
+					<div className="flex flex-col">
+						<p className="font-bold text-sm text-wrap text-gray-800 truncate w-[150px]">
+							{title || name}
+						</p>
+						<p className="text-[12px] text-gray-500">
+							{format(release_date || first_air_date)}
+						</p>
+					</div>
+					<div>
+						<p>
+							<AddButton />
+						</p>
+					</div>
 				</div>
 			</div>
 		</Link>
